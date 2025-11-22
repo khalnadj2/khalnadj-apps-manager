@@ -10,16 +10,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="container navbar-content">
         <Link href="/" className="logo">
-          <img
-            src="/khalnadj-apps-manager/images/logo.png"
-            alt="Logo"
-            width="64"
-            height="64"
-            style={{
-              mixBlendMode: 'normal',
-              backgroundColor: 'transparent'
-            }}
-          />
+          <img src="/khalnadj-apps-manager/images/logo.png" alt="Logo" width="64" height="64" />
           <span style={{ fontSize: '2rem', marginLeft: '1.5rem' }}>Khalnadj Apps</span>
         </Link>
         <div className="nav-links">

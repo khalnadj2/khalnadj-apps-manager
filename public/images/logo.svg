@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular border with gradient -->
+  <circle cx="32" cy="32" r="30" stroke="url(#gradient)" stroke-width="2" fill="none"/>
+  
+  <!-- Crescent moon -->
+  <path d="M 28 15 A 15 15 0 1 0 28 49 A 12 12 0 1 1 28 15 Z" fill="url(#gradient)"/>
+  
+  <!-- Star -->
+  <path d="M 42 28 L 44 33 L 49 33 L 45 36 L 47 41 L 42 38 L 37 41 L 39 36 L 35 33 L 40 33 Z" fill="url(#gradient)"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#84cc16;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -153,6 +153,24 @@ function DownloadCard({ app }) {
           width: auto;
           display: block;
         }
+
+        @media (max-width: 768px) {
+          .download-card {
+            padding: 0.875rem;
+            gap: 0.875rem;
+          }
+          .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            font-size: 1.5rem;
+          }
+          .content h3 {
+            font-size: 1.1rem;
+          }
+          .google-play-badge img {
+            height: 50px;
+          }
+        }
       `}</style>
     </div>
   );

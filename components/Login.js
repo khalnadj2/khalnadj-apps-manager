@@ -102,16 +102,18 @@ export default function Login({ onLogin }) {
         .toggle - password:hover {
   color: var(--text - primary);
 }
-        .form - input {
-  width: 100 %;
-  padding: 0.75rem;
-  border: 1px solid var(--border - color);
-  border - radius: var(--radius - sm);
-  background - color: var(--bg - tertiary);
-  color: var(--text - primary);
-  font - size: 1rem;
-}
-        .form - input:focus {
+        .form-input {
+          width: 100%;
+          padding: 0.75rem;
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+          background-color: var(--bg-tertiary);
+          color: var(--text-primary);
+          font-size: 1rem;
+        }
+        .password-group .form-input {
+          padding-right: 40px; /* Space for the eye icon */
+        }  .form - input:focus {
   outline: none;
   border - color: var(--primary - color);
 }

@@ -124,6 +124,9 @@ export default function SettingsPage() {
           color: var(--text-primary);
           font-size: 1rem;
         }
+        .password-group .form-input {
+          padding-right: 40px; /* Space for the eye icon */
+        }
         .form-input:focus {
           outline: none;
           border-color: var(--primary-color);

@@ -3,43 +3,55 @@
 import { useState } from 'react';
 
 export default function Login({ onLogin }) {
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const success = onLogin(password);
-        if (success) {
-            setError('');
-        } else {
-            setError('Incorrect password');
-        }
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const success = onLogin(email, password);
+    if (success) {
+      setError('');
+    } else {
+      setError('Incorrect email or password');
+    }
+  };
 
-    return (
-        <div className="login-container">
-            <div className="card login-card">
-                <h2>Access Restricted</h2>
-                <p>Please enter the password to continue.</p>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter password"
-                            className="password-input"
-                            autoFocus
-                        />
-                    </div>
-                    {error && <p className="error-message">{error}</p>}
-                    <button type="submit" className="btn btn-primary full-width">
-                        Login
-                    </button>
-                </form>
-            </div>
+  return (
+    <div className="login-container">
+      <div className="card login-card">
+        <h2>Access Restricted</h2>
+        <p>Please enter your credentials to continue.</p>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email address"
+              className="form-input"
+              autoFocus
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="form-input"
+              required
+            />
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit" className="btn btn-primary full-width">
+            Login
+          </button>
+        </form>
+      </div>
 
-            <style jsx>{`
+      <style jsx>{`
         .login-container {
           display: flex;
           justify-content: center;
@@ -63,7 +75,7 @@ export default function Login({ onLogin }) {
         .form-group {
           margin-bottom: 1rem;
         }
-        .password-input {
+        .form-input {
           width: 100%;
           padding: 0.75rem;
           border: 1px solid var(--border-color);
@@ -72,7 +84,7 @@ export default function Login({ onLogin }) {
           color: var(--text-primary);
           font-size: 1rem;
         }
-        .password-input:focus {
+        .form-input:focus {
           outline: none;
           border-color: var(--primary-color);
         }
@@ -85,6 +97,6 @@ export default function Login({ onLogin }) {
           width: 100%;
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }

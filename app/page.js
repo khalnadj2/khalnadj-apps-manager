@@ -4,33 +4,23 @@ import { useApps } from '@/lib/useApps';
 import AppCard from '@/components/AppCard';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useAuth } from '@/lib/auth';
+import Login from '@/components/Login';
 
 export default function Dashboard() {
   const { apps, loading, deleteApp, refreshApps } = useApps();
+  const { isAuthenticated, login, loading: authLoading } = useAuth();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  if (authLoading) return null;
+
+  if (!isAuthenticated) {
+    return <Login onLogin={login} />;
+  }
+
   const handleRefresh = async () => {
-    setIsRefreshing(true);
-    try {
-      const response = await fetch('/api/refresh-apps', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ apps }),
-      });
-
-      if (!response.ok) throw new Error('Failed to refresh apps');
-
-      const data = await response.json();
-      refreshApps(data.apps);
-      alert('Apps updated successfully from Google Play!');
-    } catch (error) {
-      console.error('Error refreshing apps:', error);
-      alert('Failed to update apps. Please try again.');
-    } finally {
-      setIsRefreshing(false);
-    }
+    // ... (keep existing handleRefresh logic if needed, though it's disabled)
+    alert('This feature requires a backend server and is not available on GitHub Pages.');
   };
 
   if (loading) {

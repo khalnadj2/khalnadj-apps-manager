@@ -4,6 +4,8 @@ import { useApps } from '@/lib/useApps';
 import AppForm from '@/components/AppForm';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
+import { useAuth } from '@/lib/auth';
+import Login from '@/components/Login';
 
 function EditAppContent() {
     const { getApp, updateApp, loading } = useApps();
@@ -11,6 +13,7 @@ function EditAppContent() {
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
     const [app, setApp] = useState(null);
+    const { isAuthenticated, login, loading: authLoading } = useAuth();
 
     useEffect(() => {
         if (!loading) {
@@ -26,6 +29,12 @@ function EditAppContent() {
             }
         }
     }, [loading, id, getApp, router]);
+
+    if (authLoading) return null;
+
+    if (!isAuthenticated) {
+        return <Login onLogin={login} />;
+    }
 
     const handleSubmit = (data) => {
         updateApp(id, data);

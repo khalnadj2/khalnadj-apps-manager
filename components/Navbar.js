@@ -1,66 +1,77 @@
 "use client";
 
 import Link from 'next/link';
+import { useAuth } from '@/lib/auth';
 
 export default function Navbar() {
+  const { isAuthenticated, logout } = useAuth();
+
   return (
     <nav className="navbar">
       <div className="container navbar-content">
         <Link href="/" className="logo">
-          <img src="/images/logo.png" alt="Khalnadj Apps" className="logo-icon" />
-          <span>Khalnadj Apps</span>
+          <img src="/khalnadj-apps-manager/images/logo.png" alt="Logo" width="32" height="32" />
+          <span>App Manager</span>
         </Link>
         <div className="nav-links">
           <Link href="/" className="nav-link">Dashboard</Link>
           <Link href="/download" className="nav-link">Public Page</Link>
           <Link href="/add" className="btn btn-primary">Add App</Link>
+          {isAuthenticated && (
+            <button onClick={logout} className="btn-logout">
+              Logout
+            </button>
+          )}
         </div>
       </div>
       <style jsx>{`
         .navbar {
-          height: var(--header-height);
+          background-color: var(--bg-secondary);
           border-bottom: 1px solid var(--border-color);
-          background-color: rgba(15, 23, 42, 0.8);
-          backdrop-filter: blur(10px);
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          display: flex;
-          align-items: center;
+          padding: 1rem 0;
         }
         .navbar-content {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 100%;
         }
         .logo {
-          font-size: 1.75rem;
-          font-weight: 700;
-          color: var(--text-primary);
           display: flex;
           align-items: center;
-          gap: 1rem;
-        }
-        .logo-icon {
-          width: 45px;
-          height: 45px;
-          border-radius: 8px;
-        }
-        .logo span {
-          color: #10b981;
+          gap: 0.75rem;
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          text-decoration: none;
         }
         .nav-links {
           display: flex;
-          gap: 1.5rem;
           align-items: center;
+          gap: 1.5rem;
         }
         .nav-link {
-          font-weight: 500;
           color: var(--text-secondary);
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: color 0.2s;
         }
         .nav-link:hover {
           color: var(--text-primary);
+        }
+        .btn-logout {
+          background: none;
+          border: 1px solid var(--border-color);
+          color: var(--text-secondary);
+          padding: 0.4rem 0.8rem;
+          border-radius: var(--radius-sm);
+          cursor: pointer;
+          font-size: 0.875rem;
+          transition: all 0.2s;
+        }
+        .btn-logout:hover {
+          background-color: var(--bg-tertiary);
+          color: var(--text-primary);
+          border-color: var(--text-secondary);
         }
       `}</style>
     </nav>

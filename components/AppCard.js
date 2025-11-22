@@ -37,7 +37,7 @@ export default function AppCard({ app, onDelete }) {
       </div>
       <div className="actions-column">
         <div className="app-actions">
-          <Link href={`/edit/${app.id}`} className="btn btn-secondary btn-sm">
+          <Link href={`/edit?id=${app.id}`} className="btn btn-secondary btn-sm">
             Edit
           </Link>
           <button onClick={() => onDelete(app.id)} className="btn btn-danger btn-sm">

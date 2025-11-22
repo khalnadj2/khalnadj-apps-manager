@@ -2,27 +2,33 @@
 
 import { useApps } from '@/lib/useApps';
 import AppForm from '@/components/AppForm';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
 
-export default function EditAppPage({ params }) {
+function EditAppContent() {
     const { getApp, updateApp, loading } = useApps();
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
     const [app, setApp] = useState(null);
 
     useEffect(() => {
         if (!loading) {
-            const foundApp = getApp(params.id);
+            if (!id) {
+                router.push('/');
+                return;
+            }
+            const foundApp = getApp(id);
             if (foundApp) {
                 setApp(foundApp);
             } else {
                 router.push('/');
             }
         }
-    }, [loading, params.id, getApp, router]);
+    }, [loading, id, getApp, router]);
 
     const handleSubmit = (data) => {
-        updateApp(params.id, data);
+        updateApp(id, data);
         router.push('/');
     };
 
@@ -42,5 +48,13 @@ export default function EditAppPage({ params }) {
         }
       `}</style>
         </div>
+    );
+}
+
+export default function EditAppPage() {
+    return (
+        <Suspense fallback={<div className="loading">Loading...</div>}>
+            <EditAppContent />
+        </Suspense>
     );
 }

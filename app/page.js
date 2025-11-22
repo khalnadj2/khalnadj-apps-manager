@@ -43,11 +43,12 @@ export default function Dashboard() {
         <h1>My Apps</h1>
         <div className="actions">
           <button
-            onClick={handleRefresh}
             className="btn btn-secondary"
-            disabled={isRefreshing}
+            disabled={true}
+            title="Feature unavailable on GitHub Pages"
+            onClick={() => alert('This feature requires a backend server and is not available on GitHub Pages.')}
           >
-            {isRefreshing ? 'Refreshing...' : '↻ Refresh Data'}
+            ↻ Refresh Data (Unavailable)
           </button>
           <Link href="/add" className="btn btn-primary">
             + Add New App

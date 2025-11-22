@@ -1,0 +1,22 @@
+
+> android_app_manager@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.33
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+
+> Build error occurred
+Error: Page "/edit/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.
+    at /home/khaled/.gemini/antigravity/scratch/android_app_manager/node_modules/next/dist/build/index.js:1297:59
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Span.traceAsyncFn (/home/khaled/.gemini/antigravity/scratch/android_app_manager/node_modules/next/dist/trace/trace.js:154:20)
+    at async Promise.all (index 6)
+    at async /home/khaled/.gemini/antigravity/scratch/android_app_manager/node_modules/next/dist/build/index.js:1175:17
+    at async Span.traceAsyncFn (/home/khaled/.gemini/antigravity/scratch/android_app_manager/node_modules/next/dist/trace/trace.js:154:20)
+    at async /home/khaled/.gemini/antigravity/scratch/android_app_manager/node_modules/next/dist/build/index.js:1098:124
+    at async Span.traceAsyncFn (/home/khaled/.gemini/antigravity/scratch/android_app_manager/node_modules/next/dist/trace/trace.js:154:20)
+    at async build (/home/khaled/.gemini/antigravity/scratch/android_app_manager/node_modules/next/dist/build/index.js:368:9)

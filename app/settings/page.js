@@ -5,65 +5,74 @@ import { useAuth } from '@/lib/auth';
 import Login from '@/components/Login';
 
 export default function SettingsPage() {
-    const { isAuthenticated, login, loading: authLoading, updateCredentials } = useAuth();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
+  const { isAuthenticated, login, loading: authLoading, updateCredentials } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState('');
 
-    if (authLoading) return null;
+  if (authLoading) return null;
 
-    if (!isAuthenticated) {
-        return <Login onLogin={login} />;
-    }
+  if (!isAuthenticated) {
+    return <Login onLogin={login} />;
+  }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        updateCredentials(email, password);
-        setMessage('Credentials updated successfully! Please remember them.');
-        setEmail('');
-        setPassword('');
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateCredentials(email, password);
+    setMessage('Credentials updated successfully! Please remember them.');
+    setEmail('');
+    setPassword('');
+  };
 
-    return (
-        <div className="page-container">
-            <h1>Settings</h1>
-            <div className="card settings-card">
-                <h2>Change Login Information</h2>
-                <p className="warning-text">
-                    Note: New credentials are saved in this browser only.
-                    Clearing cache will reset them to default.
-                </p>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label>New Email</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter new email"
-                            className="form-input"
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>New Password</label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter new password"
-                            className="form-input"
-                            required
-                        />
-                    </div>
-                    {message && <p className="success-message">{message}</p>}
-                    <button type="submit" className="btn btn-primary full-width">
-                        Update Credentials
-                    </button>
-                </form>
-            </div>
+  return (
+    <div className="page-container">
+      <h1>Settings</h1>
+      <div className="card settings-card">
+        <h2>Change Login Information</h2>
+        <p className="warning-text">
+          Note: New credentials are saved in this browser only.
+          Clearing cache will reset them to default.
+        </p>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>New Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter new email"
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group password-group">
+            <label>New Password</label>
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter new password"
+              className="form-input"
+              required
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+              title={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? "👁️‍🗨️" : "👁️"}
+            </button>
+          </div>
+          {message && <p className="success-message">{message}</p>}
+          <button type="submit" className="btn btn-primary full-width">
+            Update Credentials
+          </button>
+        </form>
+      </div>
 
-            <style jsx>{`
+      <style jsx>{`
         .settings-card {
           max-width: 500px;
           margin: 0 auto;
@@ -83,6 +92,23 @@ export default function SettingsPage() {
         }
         .form-group {
           margin-bottom: 1.5rem;
+        }
+        .password-group {
+          position: relative;
+        }
+        .toggle-password {
+          position: absolute;
+          right: 10px;
+          bottom: 8px; /* Adjusted for label */
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1.2rem;
+          padding: 0;
+          color: var(--text-secondary);
+        }
+        .toggle-password:hover {
+          color: var(--text-primary);
         }
         label {
           display: block;
@@ -111,6 +137,6 @@ export default function SettingsPage() {
           width: 100%;
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }

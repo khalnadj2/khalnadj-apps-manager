@@ -65,29 +65,21 @@ export default function AppForm({ initialData = {}, onSubmit }) {
             </div>
 
             <div className="form-group">
-                <label htmlFor="downloadUrl">Download URL</label>
+                <label htmlFor="downloadUrl">Google Play URL *</label>
                 <input
                     type="url"
                     id="downloadUrl"
                     name="downloadUrl"
-                    value={formData.downloadUrl}
+                    value={formData.downloadUrl || ''}
                     onChange={handleChange}
+                    placeholder="https://play.google.com/store/apps/details?id=..."
                     required
-                    placeholder="https://example.com/app.apk"
                 />
             </div>
 
-            <div className="form-group">
-                <label htmlFor="githubUrl">GitHub URL</label>
-                <input
-                    type="url"
-                    id="githubUrl"
-                    name="githubUrl"
-                    value={formData.githubUrl || ''}
-                    onChange={handleChange}
-                    placeholder="https://github.com/username/repo"
-                />
-            </div>
+            <button type="submit" className="btn btn-primary full-width">
+                Add App
+            </button>
 
             <div className="form-group full-width">
                 <label htmlFor="description">Description</label>

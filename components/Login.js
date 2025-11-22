@@ -81,27 +81,44 @@ export default function Login({ onLogin }) {
   color: var(--text - secondary);
   margin - bottom: 1.5rem;
 }
-        .form - group {
-  margin - bottom: 1rem;
-}
-        .password - group {
-  position: relative;
-}
-        .toggle - password {
-  position: absolute;
-  right: 10px;
-  top: 50 %;
-  transform: translateY(-50 %);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font - size: 1.2rem;
-  padding: 0;
-  color: var(--text - secondary);
-}
-        .toggle - password:hover {
-  color: var(--text - primary);
-}
+        .form-group {
+          margin-bottom: 1rem;
+        }
+        .password-group {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          padding: 0.75rem;
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-sm);
+          background-color: var(--bg-tertiary);
+          position: relative;
+        }
+        .password-group:focus-within {
+          border-color: var(--primary-color);
+        }
+        .password-group .form-input {
+          border: none;
+          background: transparent;
+          padding: 0;
+          margin: 0;
+          flex: 1;
+          outline: none;
+          width: 100%;
+        }
+        .toggle-password {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1.2rem;
+          padding: 0 0 0 10px;
+          color: var(--text-secondary);
+          display: flex;
+          align-items: center;
+        }
+        .toggle-password:hover {
+          color: var(--text-primary);
+        }
         .form-input {
           width: 100%;
           padding: 0.75rem;
@@ -111,12 +128,10 @@ export default function Login({ onLogin }) {
           color: var(--text-primary);
           font-size: 1rem;
         }
-        .password-group .form-input {
-          padding-right: 40px; /* Space for the eye icon */
-        }  .form - input:focus {
-  outline: none;
-  border - color: var(--primary - color);
-}
+        .form-input:focus {
+          outline: none;
+          border-color: var(--primary-color);
+        }
         .error - message {
   color: var(--error - color);
   font - size: 0.875rem;

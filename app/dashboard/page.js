@@ -111,6 +111,8 @@ export default function Dashboard() {
           }
           .btn {
             width: 100%;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
           }
         }
       `}</style>

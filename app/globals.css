@@ -213,3 +213,26 @@ label {
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+    /* Scale down base font size */
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}

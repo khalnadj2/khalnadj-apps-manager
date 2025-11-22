@@ -77,6 +77,19 @@ export default function Navbar() {
           color: var(--text-primary);
           border-color: var(--text-secondary);
         }
+
+        @media (max-width: 768px) {
+          .navbar-content {
+            flex-direction: column;
+            gap: 1rem;
+          }
+          .nav-links {
+            width: 100%;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+          }
+        }
       `}</style>
     </nav>
   );

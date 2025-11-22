@@ -14,17 +14,17 @@ export default function Navbar() {
           <span>App Manager</span>
         </Link>
         <div className="nav-links">
-          <Link href="/download" className="nav-link">Public Page</Link>
+          <Link href="/" className="nav-link">Public Page</Link>
           {isAuthenticated ? (
             <>
-              <Link href="/" className="nav-link">Dashboard</Link>
+              <Link href="/dashboard" className="nav-link">Dashboard</Link>
               <Link href="/settings" className="nav-link">Settings</Link>
               <button onClick={logout} className="btn-logout">
                 Logout
               </button>
             </>
           ) : (
-            <Link href="/" className="nav-link">Login</Link>
+            <Link href="/dashboard" className="nav-link">Login</Link>
           )}
         </div>
       </div>

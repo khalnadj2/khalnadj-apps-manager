@@ -235,7 +235,6 @@ export default function AppCard({ app, onDelete }) {
           }
         }
       `}</style>
-      `}</style>
-    </div >
+    </div>
   );
 }

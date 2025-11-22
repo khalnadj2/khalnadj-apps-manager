@@ -100,7 +100,7 @@ export default function SettingsPage() {
           padding: 0.75rem;
           border: 1px solid var(--border-color);
           border-radius: var(--radius-sm);
-          background-color: var(--bg-tertiary);
+          background-color: transparent;
           position: relative;
         }
         .password-group:focus-within {
@@ -138,7 +138,7 @@ export default function SettingsPage() {
           padding: 0.75rem;
           border: 1px solid var(--border-color);
           border-radius: var(--radius-sm);
-          background-color: var(--bg-tertiary);
+          background-color: transparent;
           color: var(--text-primary);
           font-size: 1rem;
         }

@@ -18,7 +18,6 @@ export default function Navbar() {
           {isAuthenticated ? (
             <>
               <Link href="/" className="nav-link">Dashboard</Link>
-              <Link href="/add" className="btn btn-primary">Add App</Link>
               <Link href="/settings" className="nav-link">Settings</Link>
               <button onClick={logout} className="btn-logout">
                 Logout

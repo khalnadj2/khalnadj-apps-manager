@@ -6,8 +6,8 @@ import { AuthProvider } from "@/lib/auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Android App Manager",
-  description: "Manage your Android applications with ease.",
+  title: "Khalnadj Apps",
+  description: "Download Khalnadj Islamic and utility applications for Android.",
   icons: {
     icon: '/khalnadj-apps-manager/favicon.ico',
   },

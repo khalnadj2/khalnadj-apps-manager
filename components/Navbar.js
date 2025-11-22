@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="container navbar-content">
         <Link href="/" className="logo">
           <img src="/khalnadj-apps-manager/images/logo.png" alt="Logo" width="32" height="32" />
-          <span>App Manager</span>
+          <span>Khalnadj Apps</span>
         </Link>
         <div className="nav-links">
           <Link href="/" className="nav-link">Public Page</Link>

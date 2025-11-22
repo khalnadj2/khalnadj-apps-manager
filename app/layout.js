@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Android App Manager",
   description: "Manage your Android applications with ease.",
+  icons: {
+    icon: '/khalnadj-apps-manager/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }) {

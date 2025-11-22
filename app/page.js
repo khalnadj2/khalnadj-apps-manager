@@ -1,66 +1,112 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import { useApps } from '@/lib/useApps';
+import AppCard from '@/components/AppCard';
+import Link from 'next/link';
+import { useState } from 'react';
+
+export default function Dashboard() {
+  const { apps, loading, deleteApp, refreshApps } = useApps();
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      const response = await fetch('/api/refresh-apps', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ apps }),
+      });
+
+      if (!response.ok) throw new Error('Failed to refresh apps');
+
+      const data = await response.json();
+      refreshApps(data.apps);
+      alert('Apps updated successfully from Google Play!');
+    } catch (error) {
+      console.error('Error refreshing apps:', error);
+      alert('Failed to update apps. Please try again.');
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  if (loading) {
+    return <div className="loading">Loading apps...</div>;
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="dashboard">
+      <div className="header">
+        <h1>My Apps</h1>
+        <div className="actions">
+          <button
+            onClick={handleRefresh}
+            className="btn btn-secondary"
+            disabled={isRefreshing}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {isRefreshing ? 'Refreshing...' : '↻ Refresh Data'}
+          </button>
+          <Link href="/add" className="btn btn-primary">
+            + Add New App
+          </Link>
         </div>
-      </main>
+      </div>
+
+      {apps.length === 0 ? (
+        <div className="empty-state">
+          <p>No apps found. Start by adding one!</p>
+        </div>
+      ) : (
+        <div className="app-grid">
+          {apps.map(app => (
+            <AppCard key={app.id} app={app} onDelete={deleteApp} />
+          ))}
+        </div>
+      )}
+
+      <style jsx>{`
+        .dashboard {
+          max-width: 900px;
+          margin: 0 auto;
+        }
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 2rem;
+        }
+        .actions {
+          display: flex;
+          gap: 1rem;
+        }
+        .app-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .loading, .empty-state {
+          text-align: center;
+          padding: 4rem;
+          color: var(--text-secondary);
+          font-size: 1.2rem;
+        }
+        .btn-secondary {
+          background-color: var(--bg-tertiary);
+          color: var(--text-primary);
+          border: 1px solid var(--border-color);
+        }
+        .btn-secondary:hover:not(:disabled) {
+          background-color: var(--bg-secondary);
+          border-color: var(--primary-color);
+        }
+        .btn-secondary:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+      `}</style>
     </div>
   );
 }

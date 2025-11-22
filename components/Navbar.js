@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="container navbar-content">
         <Link href="/" className="logo">
           <img src="/khalnadj-apps-manager/images/logo.png" alt="Logo" width="32" height="32" />
-          <span>Khalnadj Apps</span>
+          <span style={{ fontSize: '2rem', marginLeft: '1.5rem' }}>Khalnadj Apps</span>
         </Link>
         <div className="nav-links">
           <Link href="/" className="nav-link">Public Page</Link>
@@ -42,8 +42,8 @@ export default function Navbar() {
         .logo {
           display: flex;
           align-items: center;
-          gap: 1.5rem;
-          font-size: 2rem;
+          gap: 1.5rem !important;
+          font-size: 2rem !important;
           font-weight: 700;
           color: var(--text-primary);
           text-decoration: none;

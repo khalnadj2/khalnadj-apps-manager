@@ -156,16 +156,38 @@ function DownloadCard({ app }) {
 
         @media (max-width: 768px) {
           .download-card {
-            padding: 0.875rem;
-            gap: 0.875rem;
+            padding: 1rem;
+            gap: 1rem;
+            flex-direction: column;
+            align-items: center;
           }
           .icon-wrapper {
-            width: 48px;
-            height: 48px;
-            font-size: 1.5rem;
+            width: 56px;
+            height: 56px;
+            font-size: 1.75rem;
+          }
+          .content {
+            width: 100%;
+            text-align: center;
+          }
+          .header {
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+            align-items: center;
           }
           .content h3 {
             font-size: 1.1rem;
+          }
+          .package {
+            word-break: break-all;
+          }
+          .description {
+            text-align: left;
+          }
+          .actions {
+            justify-content: center;
+            width: 100%;
           }
           .google-play-badge img {
             height: 50px;

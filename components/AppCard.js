@@ -180,6 +180,53 @@ export default function AppCard({ app, onDelete }) {
           line-height: 0;
         }
         .google-play-badge img { width: auto; height: 60px; }
+
+        @media (max-width: 768px) {
+          .app-card {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+          }
+          .app-icon {
+            width: 56px;
+            height: 56px;
+            font-size: 1.75rem;
+          }
+          .app-details {
+            width: 100%;
+            text-align: center;
+          }
+          .app-details h3 {
+            font-size: 1.1rem;
+            white-space: normal;
+          }
+          .package-name {
+            white-space: normal;
+            word-break: break-all;
+          }
+          .description {
+            text-align: left;
+          }
+          .meta {
+            justify-content: center;
+          }
+          .actions-column {
+            width: 100%;
+            align-items: center;
+          }
+          .app-actions {
+            width: 100%;
+            justify-content: center;
+          }
+          .btn-sm {
+            flex: 1;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+          }
+          .google-play-badge img {
+            height: 50px;
+          }
+        }
       `}</style>
     </div>
   );

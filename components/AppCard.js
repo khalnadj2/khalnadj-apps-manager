@@ -212,22 +212,30 @@ export default function AppCard({ app, onDelete }) {
           }
           .actions-column {
             width: 100%;
+            flex-direction: row;
             align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
           }
           .app-actions {
-            width: 100%;
-            justify-content: center;
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
           }
           .btn-sm {
-            flex: 1;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.8rem;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+          }
+          .google-play-badge {
+            flex-shrink: 0;
           }
           .google-play-badge img {
-            height: 50px;
+            height: 40px;
           }
         }
       `}</style>
-    </div>
+      `}</style>
+    </div >
   );
 }

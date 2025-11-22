@@ -18,9 +18,12 @@ export default function Navbar() {
           <Link href="/download" className="nav-link">Public Page</Link>
           <Link href="/add" className="btn btn-primary">Add App</Link>
           {isAuthenticated && (
-            <button onClick={logout} className="btn-logout">
-              Logout
-            </button>
+            <>
+              <Link href="/settings" className="nav-link">Settings</Link>
+              <button onClick={logout} className="btn-logout">
+                Logout
+              </button>
+            </>
           )}
         </div>
       </div>

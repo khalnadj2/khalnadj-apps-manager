@@ -24,7 +24,7 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <Link href="/dashboard" className="nav-link">Login</Link>
+            null
           )}
         </div>
       </div>

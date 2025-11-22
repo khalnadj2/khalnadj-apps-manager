@@ -42,8 +42,8 @@ export default function Navbar() {
         .logo {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
-          font-size: 1.25rem;
+          gap: 1rem;
+          font-size: 1.5rem;
           font-weight: 700;
           color: var(--text-primary);
           text-decoration: none;

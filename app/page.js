@@ -244,6 +244,37 @@ export default function DownloadPage() {
         .stat-label { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
         .app-list { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
         .loading, .empty-state { text-align: center; font-size: 1.2rem; color: var(--text-secondary); padding: 3rem 0; }
+
+        @media (max-width: 768px) {
+          .download-page { 
+            max-width: 100%; 
+            margin: 0;
+            padding: 0 0.5rem;
+          }
+          .hero { 
+            padding: 1rem 0; 
+            margin-bottom: 2rem;
+          }
+          .hero h1 { 
+            font-size: 2rem; 
+          }
+          .hero p { 
+            font-size: 1rem; 
+          }
+          .about-section { 
+            padding: 1.5rem; 
+            margin-bottom: 2rem;
+          }
+          .about-section h2 { 
+            font-size: 1.5rem; 
+          }
+          .stat-number { 
+            font-size: 2rem; 
+          }
+          .app-list { 
+            gap: 1rem; 
+          }
+        }
       `}</style>
     </div>
   );

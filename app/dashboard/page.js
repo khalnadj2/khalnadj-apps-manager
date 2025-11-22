@@ -99,6 +99,11 @@ export default function Dashboard() {
         }
 
         @media (max-width: 768px) {
+          .dashboard {
+            max-width: 100%;
+            margin: 0;
+            padding: 0 0.5rem;
+          }
           .header {
             flex-direction: column;
             gap: 1rem;
@@ -113,6 +118,9 @@ export default function Dashboard() {
             width: 100%;
             padding: 0.5rem 1rem;
             font-size: 0.875rem;
+          }
+          .app-grid {
+            gap: 1rem;
           }
         }
       `}</style>
